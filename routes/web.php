@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/salas', 'SalasController@index');
+
+Route::get('/salas/adicionar', 'SalasController@create');
+Route::post('/salas/adicionar', 'SalasController@store');
+Route::delete('/salas/{id}', 'SalasController@destroy');
+

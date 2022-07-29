@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SalasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
     $salas = Sala::all();
 
@@ -33,6 +37,14 @@ class SalasController extends Controller
 
             return redirect('/salas');
 
+        }
+
+        public function editaNome(Request $request)
+        {
+            $novoNome = $request->nome;
+            $sala = Sala::find($request->id);
+            $sala->nome = $novoNome;
+            $sala->save();
         }
 }
 ?>

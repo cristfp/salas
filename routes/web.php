@@ -18,4 +18,14 @@ Route::get('/salas', 'SalasController@index');
 Route::get('/salas/adicionar', 'SalasController@create');
 Route::post('/salas/adicionar', 'SalasController@store');
 Route::delete('/salas/{id}', 'SalasController@destroy');
+Route::post('/salas/{id}/editaNome', 'SalasController@editaNome');
 
+
+Auth::routes();
+
+Route::get('/home', 'SalasController@index')->name('home');
+Route::get('/sair', function () {
+
+    Auth::logout();
+    return redirect('/login');
+});
